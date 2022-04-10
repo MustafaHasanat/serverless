@@ -1,4 +1,6 @@
+from calendar import calendar
 from http.server import BaseHTTPRequestHandler
+import calendar
 
 class handler(BaseHTTPRequestHandler):
 
@@ -6,7 +8,7 @@ class handler(BaseHTTPRequestHandler):
     self.send_response(200)
     self.send_header('Content-type', 'text/plain')
     self.end_headers()
-    self.wfile.write("hello".encode())
+    self.wfile.write(calendar.month(2022, 4).encode())
     return
 
 
