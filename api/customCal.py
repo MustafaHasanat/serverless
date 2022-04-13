@@ -10,10 +10,12 @@ class handler(BaseHTTPRequestHandler):
         query_string_list = parse.parse_qsl(url_components.query)
         dic = dict(query_string_list)
         
+        print(dic)
+        
         month, year = dic.get("month"), dic("year")
         
-        if month and year:
-            message = calendar.month(int(year), int(month))
+        if (type(month) == int) and (type(year) == int):
+            message = calendar.month(year, month)
         else:
             message = calendar.month(2022, 4)
         
