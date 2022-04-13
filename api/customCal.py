@@ -10,14 +10,14 @@ class handler(BaseHTTPRequestHandler):
         query_string_list = parse.parse_qsl(url_components.query)
         dic = dict(query_string_list)
         
-        month, year = dic['month'], dic['year']
+        month, year = dic.get("month"), dic("year")
         
         if month and year:
-            message = calendar.month(year, month)
+            message = calendar.month(int(year), int(month))
         elif month and not year:
-            message = calendar.month(2022, month)
+            message = calendar.month(2022, int(month))
         elif not month and year:
-            message = calendar.month(year, 4)
+            message = calendar.month(int(year), 4)
         else:
             message = calendar.month(2022, 4)
         
