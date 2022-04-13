@@ -6,7 +6,7 @@ from urllib import parse
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
         s = self.path
-        url_components = parse.urlparse(s)
+        url_components = parse.urlsplit(s)
         query_string_list = parse.parse_qsl(url_components.query)
         dic = dict(query_string_list)
         
@@ -14,10 +14,6 @@ class handler(BaseHTTPRequestHandler):
         
         if month and year:
             message = calendar.month(int(year), int(month))
-        elif month and not year:
-            message = calendar.month(2022, int(month))
-        elif not month and year:
-            message = calendar.month(int(year), 4)
         else:
             message = calendar.month(2022, 4)
         
